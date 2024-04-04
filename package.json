@@ -12,10 +12,12 @@
     "devDependencies": {
         "autoprefixer": "^10.4.19",
         "axios": "^0.21",
-        "daisyui": "^4.9.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.38",
-        "tailwindcss": "^3.4.1"
+        "tailwindcss": "^3.4.3"
+    },
+    "dependencies": {
+        "daisyui": "^4.9.0"
     }
 }

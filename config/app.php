@@ -174,8 +174,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        // Add by ilyas
         Ladumor\LaravelPwa\PWAServiceProvider::class,
     ],
 
@@ -233,5 +231,4 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'LaravelPwa' => \Ladumor\LaravelPwa\LaravelPwa::class,
     ],
-
 ];
