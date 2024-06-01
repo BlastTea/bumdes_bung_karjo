@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +13,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
-/*
-=========================
-<<<<<< Route Guest >>>>>>
-=========================
-*/
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-// Route untuk halaman utama
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-/*
-=========================
-<<<<<< Route Auth >>>>>>
-=========================
-*/
+require __DIR__.'/auth.php';

@@ -1,16 +1,26 @@
-/** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
+    presets: [require("daisyui")],
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./resources/views/**/*.blade.php",
     ],
+
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-    plugins: [require("flowbite/plugin"), require("daisyui")],
+
+    plugins: [require("@tailwindcss/forms")],
+    // daisyUI config (optional - here are the default values)
     daisyui: {
         themes: ["light", "dark"],
+        // darkTheme: "", // Kosongkan atau hapus untuk menggunakan tema terang default
         base: true,
         styled: true,
         utils: true,

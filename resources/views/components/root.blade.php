@@ -8,22 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap">
 
     <title>{{ $title }}</title>
-
-    <!-- PWA  -->
-    <meta name="theme-color" content="#6777ef" />
-    <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
-    <link rel="manifest" href="{{ asset('/manifest.json') }}">
-
-    <!-----------------------------------------------------------
-    -- animate.min.css by Daniel Eden (https://animate.style)
-    -- is required for the animation of notifications and slide out panels
-    -- you can ignore this step if you already have this file in your project
-    --------------------------------------------------------------------------->
-    <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
-    {{-- @yield('styles') --}}
 </head>
 
 <body>
