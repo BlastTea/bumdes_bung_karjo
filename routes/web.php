@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home', [
-        'title' => 'Bumdes | Homepage',
-    ]);
-});
+
+/*
+=========================
+<<<<<< Route Guest >>>>>>
+=========================
+*/
+
+// Route untuk halaman utama
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+/*
+=========================
+<<<<<< Route Auth >>>>>>
+=========================
+*/
