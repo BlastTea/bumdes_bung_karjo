@@ -116,11 +116,28 @@ DB_PASSWORD=your_prod_password
 ```
 php artisan serve
 ```
-2. Menjalankan proses build untuk aset front-end:
+2. Menjalankan Migration ke Database server
+```
+php artisan migrate
+```
+3. Buat key di env agar laravel bisa digunakan
+```
+php artisan key:generate
+```
+4. Menjalankan proses build untuk aset front-end:
 ```
 npm run dev
 ```
+5. Jalankan perintah tambahan berikut untuk membersihkan dan membuat ulang cache route, view, dan config
+```
+php artisan view:clear
+php artisan route:clear
+php artisan config:clear
 
+php artisan view:cache
+php artisan route:cache
+php artisan config:cache
+```
 # DONE
 ## Thx for Attention
 
