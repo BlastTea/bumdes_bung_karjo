@@ -1,64 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Management Pariwisata BUMDes Sumberejo
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Selamat datang di repository Management Pariwisata BUMDes Sumberejo. Proyek ini adalah sebuah aplikasi web untuk mengelola informasi dan layanan pariwisata yang ditawarkan oleh BUMDes Sumberejo. Aplikasi ini dibangun menggunakan framework Laravel untuk backend dan Tailwind CSS dengan DaisyUI untuk frontend.
 
-## About Laravel
+## Daftar Isi
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Prasyarat](#prasyarat)
+- [Instalasi](#instalasi)
+- [Konfigurasi](#konfigurasi)
+  - [.env](#env)
+  - [.env.development](#envdevelopment)
+  - [.env.production](#envproduction)
+- [Menjalankan Aplikasi](#menjalankan-aplikasi)
+- [Struktur Proyek](#struktur-proyek)
+- [Kontribusi](#kontribusi)
+- [Lisensi](#lisensi)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prasyarat
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Pastikan Anda sudah menginstal prasyarat berikut:
+- PHP >= 8.0
+- Composer
+- Node.js & npm
+- Git
 
-## Learning Laravel
+## Instalasi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Ikuti langkah-langkah berikut untuk menginstal proyek ini di mesin lokal Anda:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone repository:
+    ```bash
+    git clone https://github.com/BlastTea/bumdes_bung_karjo.git
+    cd bumdes_bung_karjo
+    ```
 
-## Laravel Sponsors
+2. Instal dependensi PHP:
+    ```bash
+    composer install
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. Instal dependensi JavaScript:
+    ```bash
+    npm install
+    ```
 
-### Premium Partners
+4. Buat file konfigurasi lingkungan:
+    ```bash
+    cp .env.example .env
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+5. Buat kunci aplikasi:
+    ```bash
+    php artisan key:generate
+    ```
 
-## Contributing
+## Konfigurasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### .env
 
-## Code of Conduct
+File `.env` adalah file konfigurasi utama untuk aplikasi ini. Di sini Anda akan mengatur variabel lingkungan yang diperlukan oleh aplikasi. Contoh variabel yang perlu diatur:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```dotenv
+APP_NAME=Management Pariwisata BUMDes Sumberejo
+APP_ENV=local
+APP_KEY=base64:generated_key_here
+APP_DEBUG=true
+APP_URL=http://localhost
 
-## Security Vulnerabilities
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
 
-## License
+# Tailwind/DaisyUI settings
+MIX_TAILWIND_MODE=jit
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## .env.development
+File .env.development digunakan untuk konfigurasi saat pengembangan. Ini memungkinkan Anda untuk menyimpan pengaturan yang berbeda dari lingkungan produksi, seperti:
+
+```dotenv development
+APP_ENV=development
+APP_DEBUG=true
+
+# Development-specific settings
+DB_DATABASE=your_dev_database
+DB_USERNAME=your_dev_username
+DB_PASSWORD=your_dev_password
+```
+
+### .env.production
+File .env.production digunakan untuk konfigurasi saat produksi. Di sini Anda akan menyimpan pengaturan yang lebih aman dan optimal untuk aplikasi yang berjalan di lingkungan produksi:
+
+```dotenv production
+APP_ENV=production
+APP_DEBUG=false
+
+# Production-specific settings
+DB_DATABASE=your_prod_database
+DB_USERNAME=your_prod_username
+DB_PASSWORD=your_prod_password
+```
+
+# Menjalankan Aplikasi
+### Setelah melakukan konfigurasi, Anda bisa menjalankan aplikasi dengan perintah berikut:
+
+1. Menjalankan server pengembangan Laravel:
+```
+php artisan serve
+```
+2. Menjalankan proses build untuk aset front-end:
+```
+npm run dev
+```
+
+# DONE
+## Thx for Attention
+
+
