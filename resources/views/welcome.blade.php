@@ -47,6 +47,18 @@
             width: 100%;
             height: auto;
         }
+
+        .navbar-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bg-dark {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .bg-light {
+            background-color: white;
+        }
     </style>
 
     <!-- Scripts -->
@@ -70,23 +82,6 @@
                 }
             });
 
-            const slider_thumb = $("#slider-thumb");
-            slider_thumb.owlCarousel({
-                rtl: false,
-                loop: true,
-                margin: 12,
-                nav: false,
-                dots: false,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: false,
-                responsive: {
-                    0: {
-                        items: 2
-                    }
-                }
-            });
-
             // Custom Navigation Events
             $(".customNextBtn").click(function() {
                 main_slider.trigger("next.owl.carousel");
@@ -94,19 +89,14 @@
             $(".customPrevBtn").click(function() {
                 main_slider.trigger("prev.owl.carousel");
             });
-
-            $(".customNextBtn").click(function() {
-                slider_thumb.trigger("next.owl.carousel");
-            });
-            $(".customPrevBtn").click(function() {
-                slider_thumb.trigger("prev.owl.carousel");
-            });
         });
     </script>
 </head>
 
-<body class="font-sans antialiased bg-gray-900 text-white">
-    <div class="navbar bg-base-100">
+<body class="font-sans antialiased bg-gray-900 text-white" x-data="{ scrolled: false }"
+    @scroll.window="scrolled = (window.pageYOffset > 50)">
+    <div :class="scrolled ? 'bg-light shadow-lg' : 'bg-dark bg-opacity-10'"
+        class="navbar fixed top-0 left-0 right-0 transition navbar-transition z-50">
         <div class="navbar-start">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -119,8 +109,14 @@
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a>Item 1</a></li>
-                    <li>
-                        <a>Parent</a>
+                    <li tabindex="0">
+                        <a class="justify-between">
+                            Parent
+                            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
                         <ul class="p-2">
                             <li><a>Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
@@ -131,10 +127,10 @@
             </div>
             <a class="btn btn-ghost text-xl">daisyUI</a>
         </div>
-        <div class="navbar-center hidden lg:flex">
+        <div class="navbar-end hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
                 <li><a>Item 1</a></li>
-                <li>
+                <li tabindex="0">
                     <details>
                         <summary>Parent</summary>
                         <ul class="p-2">
@@ -145,23 +141,26 @@
                 </li>
                 <li><a>Item 3</a></li>
             </ul>
-        </div>
-        <div class="navbar-end">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 btn btn-ghost mt-[-10px]">Logout</a>
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="btn btn-ghost ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+            <ul class="menu menu-horizontal px-1">
+                <li>
+                    @if (Route::has('login'))
+                        <div class="hidden lg:block">
+                            @auth
+                                <a href="{{ route('logout') }}"
+                                    class="text-sm text-gray-700 dark:text-gray-500 btn btn-ghost mt-[-10px]">Logout</a>
+                            @else
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}"
+                                        class="btn btn-ghost ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </li>
+            </ul>
         </div>
     </div>
-    <section>
+    <section class="hero">
         <div id="main-slider" class="owl-carousel owl-theme relative">
             <div class="relative w-full bg-cover bg-center"
                 style="background-image: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg');">
@@ -247,31 +246,17 @@
                 </div>
             </div>
         </div>
-        <div class="hidden lg:block absolute top-[25%] -right-8 bg-slate-700 py-5 pl-5 rounded-xl z-[1] w-[450px] mt-5">
-            <div id="slider-thumb" class="owl-carousel owl-theme">
-                <div class="item">
-                    <img src="https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg"
-                        class="w-64 h-72 object-cover rounded-xl" />
-                </div>
-                <div class="item">
-                    <img src="https://cdn.pixabay.com/photo/2013/10/02/23/03/mountains-190055_1280.jpg"
-                        class="w-64 h-72 object-cover rounded-xl" />
-                </div>
-                <div class="item">
-                    <img src="https://cdn.pixabay.com/photo/2016/08/11/23/48/mountains-1587287_1280.jpg"
-                        class="w-64 h-72 object-cover rounded-xl" />
-                </div>
-            </div>
-            <!-- Slider Nav -->
-            <div class="flex flex-row gap-3 pt-4">
-                <button type="button" role="presentation"
-                    class="customPrevBtn py-1 px-2 rounded-sm bg-primary text-white hover:bg-acent"><i
-                        class="fas fa-chevron-left"></i></button>
-                <button type="button" role="presentation"
-                    class="customNextBtn py-1 px-2 rounded-sm bg-primary text-white hover:bg-acent"><i
-                        class="fas fa-chevron-right"></i></button>
-            </div>
-            <!-- End Slider Nav -->
+    </section>
+
+    <section class="h-screen bg-blue-500">
+        <div class="container mx-auto h-full flex items-center justify-center">
+            <h1 class="text-white text-4xl">Welcome to Hero Section</h1>
+        </div>
+    </section>
+
+    <section class="content h-screen bg-gray-100">
+        <div class="container mx-auto h-full flex items-center justify-center">
+            <h2 class="text-gray-800 text-2xl">Content Section</h2>
         </div>
     </section>
 </body>

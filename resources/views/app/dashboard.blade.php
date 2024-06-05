@@ -1,17 +1,28 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+        @include('layouts.navigation')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+        <!-- ===== Content Area Start ===== -->
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+            <!-- ===== Header Start ===== -->
+            @include('components.core.header')
+            <!-- ===== Header End ===== -->
+
+            <!-- ===== Main Content Start ===== -->
+            <main>
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                    @include('components.core.card-sections')
+
+                    @include('components.core.chart-sections')
                 </div>
-            </div>
+            </main>
+            <!-- ===== Main Content End ===== -->
         </div>
+        <!-- ===== Content Area End ===== -->
     </div>
+    <!-- ===== Page Wrapper End ===== -->
+    <x-slot name="recordSript">
+        <script src="{{ asset('/js/bundle.js') }}"></script>
+    </x-slot>
 </x-app-layout>
