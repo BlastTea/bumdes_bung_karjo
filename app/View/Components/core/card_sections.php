@@ -4,7 +4,7 @@ namespace App\View\Components\core;
 
 use Illuminate\View\Component;
 
-class chart-sections extends Component
+class card_sections extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class chart-sections extends Component
      */
     public function render()
     {
-        return view('components.core.chart-sections');
+        return view('components.core.card-sections');
     }
 }
